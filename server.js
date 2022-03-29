@@ -5,9 +5,9 @@ const database = require('./config/database');
 const { Commande ,User ,category ,Product} =require('./models/index');
 
 // import userRoute
-// const userRoute = require('./routes/user');
-// midlware 
-// app.use('/', userRoute);
+const userRoute = require('./routes/user');
+// middleware 
+app.use('/auth', userRoute);
 
 // database connection
 
