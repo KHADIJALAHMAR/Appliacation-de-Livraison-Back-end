@@ -31,7 +31,7 @@ category.hasMany(Product);
 Product.belongsTo(category);
 
 // Create table of model
-connexion.sync({ force: true}).then(() => {
+connexion.sync({ force: false}).then(() => {
     console.log("Table Created !");
 });
 
