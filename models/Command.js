@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const connexion = require('../config/database');
-module.exports = connexion.define('commande',{
+module.exports = connexion.define('commands',{
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -11,7 +11,7 @@ module.exports = connexion.define('commande',{
         allowNull: false,
     },
     status: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     total: {
