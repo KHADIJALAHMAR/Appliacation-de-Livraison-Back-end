@@ -1,11 +1,10 @@
 
 // require Models
 const Commande =require('../models/Command.js');
-const ProductCommand=require('../models/ProductCommand');
 const User = require ('../models/User');
 const category =require('../models/Category');
 const Product = require('../models/Product');
-
+const CommandProduct = require('../models/ProductCommand');
 // connexion database 
 const connexion = require("../config/database");
 
@@ -32,7 +31,7 @@ category.hasMany(Product);
 Product.belongsTo(category);
 
 // Create table of model
-connexion.sync({ force: false}).then(() => {
+connexion.sync({ force: true}).then(() => {
     console.log("Table Created !");
 });
 
