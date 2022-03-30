@@ -12,21 +12,22 @@ id : {
     }
 },
 username :{
-    type:Sequelize.STRING(49),
+    type:Sequelize.STRING,
     allowNull :false ,
-    unique :true ,
 },
     email :{
     type:Sequelize.STRING(50),
     allowNull :false ,
     unique :true ,
 },
+
 password :{
     type:Sequelize.STRING(33),
     allowNull :false ,
 },
+
 role :{
-    type :Sequelize.INTEGER
+    type :Sequelize.STRING
 },
 
 });
