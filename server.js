@@ -5,13 +5,15 @@ const { Commande ,User ,category ,Product} =require('./models/index');
 
 // import userRoute
 const AuthRoute = require('./router/authentificationRoute');
-// middleware 
+
 
 
 // database connection
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
+// middleware 
 app.use('/auth', AuthRoute);
 
 database.authenticate()

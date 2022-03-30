@@ -16,18 +16,17 @@ username :{
     allowNull :false ,
 },
     email :{
-    type:Sequelize.STRING(50),
+    type:Sequelize.STRING,
     allowNull :false ,
-    unique :true ,
 },
 
 password :{
-    type:Sequelize.STRING(33),
+    type:Sequelize.STRING,
     allowNull :false ,
 },
 
 role :{
-    type :Sequelize.STRING
+    type :Sequelize.STRING,
 },
 
 });
