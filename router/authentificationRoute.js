@@ -4,8 +4,8 @@ const UserController = require('../controllers/UserController');
 
 // Créate Route Login
 
-// router.route('/login')
-// .post(UserController.handleLogin);
+router.route('/login')
+.post(UserController.handleLogin);
 
 
 // Créate Route Register
