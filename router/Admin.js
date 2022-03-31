@@ -23,8 +23,9 @@ router.route("Product/:id")
 
 router.route("Category")
 .get(AdminController.getCategory)
-.put(AdminController.updateCategory)
 .delete(AdminController.deleteCategory)
+router.route("Category/:id")
+.put(AdminController.updateCategory)
 
 
 
