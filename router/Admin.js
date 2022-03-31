@@ -22,15 +22,12 @@ router.route("Category")
 .put(AdminController.updateCategory)
 .delete(AdminController.deleteCategory)
 
-
-
-
-// Route User
-// router.route("Admin/user")
-// .post(AdminController.createUser)
-// .get(AdminController.getUsers)
-// .get(AdminController.getUserById)
-// .put(AdminController.updateUser)
+// ----------Route User------
+router.route("Admin/user")
+.post(AdminController.createUser)
+.get(AdminController.getUsers)
+.get(AdminController.getUserById)
+.put(AdminController.updateUser)
 
 
 
