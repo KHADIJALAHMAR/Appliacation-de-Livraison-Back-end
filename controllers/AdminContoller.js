@@ -2,7 +2,7 @@ const express = require("express");
 const {User} =require('../models');
 
 
-
+// ___________________________________________________Crud Product ___________________________________________
 const createProduct = async((req,res)=>{
 
 })

@@ -3,23 +3,25 @@ const router = express.Router();
 const {AdminController } =require('../controllers');
 
 
-// Création Route Admin*
-// Route Product 
-router.route("/Admin/create")
-.post(
-    // authorizeWithRole("admin"),
-    Admins.createProduct);
+// ________________________Création Route Admin______________________________________________________________________________
 
-router.route("/Admin/Products")
+// ------Product------
+router.route("create")
+.post( AdminController.createProduct)
+// _____Add Category______
+.post(AdminController.creatCategory)
+
+router.route("Products")
 .get(AdminController.getProduct)
-.put(
-    // authorizeWithRole("admin"),
-AdminController.updateProduct)
-.delete(
-    // authorizeWithRole("admin"),
-    AdminController.deleteProduct)
+.put(AdminController.updateProduct)
+.delete(AdminController.deleteProduct)
 
-// Route Cretion categorie 
+// ------categorie------
+router.route("Category")
+.get(AdminController.getCategory)
+.put(AdminController.updateCategory)
+.delete(AdminController.deleteCategory)
+
 
 
 
