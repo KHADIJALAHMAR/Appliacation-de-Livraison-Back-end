@@ -13,10 +13,11 @@ router.route("Create")
 // _____Add Category______
 .post(AdminController.creatCategory)
 
-router.route("Products")
+router.route("Product")
 .get(AdminController.getProduct)
-.put(AdminController.updateProduct)
 .delete(AdminController.deleteProduct)
+router.route("Product/:id")
+.put(AdminController.updateProduct)
 
 // ------categorie------
 
