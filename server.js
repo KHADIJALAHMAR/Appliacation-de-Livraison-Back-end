@@ -3,8 +3,11 @@ const app = express();
 const database = require('./config/database');
 const { Commande ,User ,category ,Product} =require('./models/index');
 
+
+
 // import userRoute
-const AuthRoute = require('./router/authentificationRoute');
+const authentificationRoute = require('./router/authentificationRoute');
+const AdminRoute =require('./router/Admin');
 
 
 
@@ -14,7 +17,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // middleware 
-app.use('/auth', AuthRoute);
+app.use('/auth', authentificationRoute);
+app.use('/Admin', AdminRoute)
 
 database.authenticate()
 .then(()=>console.log('Database connect'))
