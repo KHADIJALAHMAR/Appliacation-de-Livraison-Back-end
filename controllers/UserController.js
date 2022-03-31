@@ -32,29 +32,29 @@ const handleRegister = async (req,res)=>{
         }
 
 }
-const handleLogin = (req,res) => {
-    (async () =>{
-        if(typeof req.body.email === 'undefined') { 
-            res.status(404).json({message : "passwords are not Identical"}) 
-        }
-        const user = await User.findOne({email: req.body.email});
+const handleLogin = async (req,res) => {
+    try{
+        const user = await User.findOne({where : {email: req.body.email}});
+
         if (!user) {
-            res.status(404).json({message : "is are not Identical"});
-        }else if(typeof req.body.password === 'undefined'){
-            res.status(404).json({message : "passwords your not Identical"});
-        }else{
-            await user.comparePasswords(req.body.password).then((result) => {
-                if (!result) { 
+            res.status(404).json({message : "email Not Fond"});
+        }
+        else{
+            await  User.findOne({where :{ password :req.body.password}}).then((resault)=>{
+                if(!resault){
+                    res.status(404).json({where :{message : 'Password incorect'}})
                 }else{
-                    const id = user._id;
-                    const role = user.role;
-                    const accessToken = jwt.sign({id,role},process.env.TOKEN_SECRET);
-                    // res.cookie('token', accessToken, {httpOnly: true});
-                    res.json({accessToken});
-                }
-            }).catch((err) => res.status(404).json({err :err.message}))
-        }  
-    })();
+                        const id = user._id;
+                        const role = user.role;
+                        const accessToken = jwt.sign({id,role},process.env.TOKEN_SECRET);
+                        res.json({accessToken});
+                    }
+            })
+        } 
+    } catch(error){
+        res.status(400).json({error: error.message})
+    }
+    ;
 }
 
 
