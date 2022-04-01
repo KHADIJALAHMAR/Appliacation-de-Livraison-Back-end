@@ -1,16 +1,19 @@
 const express = require("express");
-const User =require('../models/User');
+const {User, Category} = require('../models');
+
 
 // ___________________________________________________Crud Category__________________________________________
 
 const creatCategory = async (req,res)=>{
+    const name =req.body.name;
+    console.log(name)
+    const category=  await Category.create({ name:name});
     try{
-        const Category=  await  User.create({ name:req.body.name});
-        if(!Category){
-            res.status(404).json({message :' Catecory Not Create '})
+        if(!category){
+            res.status(404).json({message :' Category Not Create '})
         }
         else{
-            res.status(200).json({message : 'Create Category'})
+            res.status(200).json(category);
         }
     }
     catch(error){
@@ -20,7 +23,7 @@ const creatCategory = async (req,res)=>{
 
 const getCategory =async (req,res)=>{
     try{
-        await User.find().then((resault)=>{
+        await Category.find().then((resault)=>{
             res.satus(200).json(resault)
         })
     }catch(error){
@@ -28,15 +31,28 @@ const getCategory =async (req,res)=>{
     }
 }
 const updateCategory =async (req,res)=>{
-    
+    const CategoryId= req.body.id;
+    try{
+        await Category.updateOne({where: {id :CategoryId}}).then(()=>{
+            res.status(200).json('Update Category ')
+        })
+    }catch(error){
+        res.status(400).json({error:error.message})
+    }
 
 }
 const deleteCategory = async (req,res)=>{
-
+    try{
+        const deleteCategory= await Category.deleteOne({where :{id:req.body.id}});
+        if(!deleteCategory){
+            res.status(400).json({message :'No Category Found'})
+        }else{
+            res.status(200).json({message :'Category Has deleted successfully !!'})
+        }
+    }catch(error){
+        res.json(404).json({error : error.message});
+    }
 }
-
-
-
 
 
 // ___________________________________________________Crud Product ___________________________________________

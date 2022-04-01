@@ -1,7 +1,7 @@
 const express =require('express');
 const app = express();
 const database = require('./config/database');
-const { Commande ,User ,category ,Product} =require('./models/index');
+const { Commande ,User ,Category ,Product} =require('./models/index');
 
 
 
@@ -19,6 +19,15 @@ app.use(express.json())
 // middleware 
 app.use('/auth', authentificationRoute);
 app.use('/Admin', AdminRoute)
+
+// console
+function ConsolLog(rep, res, next) {
+    console.log(' [' + rep['method'] + '] http://localhost:' + "4000/" + rep['url'])
+    next()
+}
+
+app.use(ConsolLog);
+// console end
 
 database.authenticate()
 .then(()=>console.log('Database connect'))

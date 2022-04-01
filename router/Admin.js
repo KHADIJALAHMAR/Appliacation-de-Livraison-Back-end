@@ -8,23 +8,23 @@ const AdminController  =require('../controllers/AdminContoller');
 
 // ------Product------
 
-router.route("Create")
+router.route("/Create")
 .post(AdminController.createProduct)
-// _____Add Category______
-.post(AdminController.creatCategory)
 
-router.route("Product")
+router.route("/Product")
 .get(AdminController.getProduct)
 .delete(AdminController.deleteProduct)
-router.route("Product/:id")
+router.route("/Product/:id")
 .put(AdminController.updateProduct)
 
 // ------categorie------
 
-router.route("Category")
+router.route("/Category")
+// _____Add Category______
+.post(AdminController.creatCategory)
 .get(AdminController.getCategory)
 .delete(AdminController.deleteCategory)
-router.route("Category/:id")
+router.route("/Category/:id")
 .put(AdminController.updateCategory)
 
 
