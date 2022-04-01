@@ -33,8 +33,8 @@ const getCategory =async (req,res)=>{
 const updateCategory =async (req,res)=>{
     const CategoryId= req.body.id;
     try{
-        await Category.updateOne({where: {id :CategoryId}}).then(()=>{
-            res.status(200).json('Update Category ')
+        await Category.update({name:req.body.name},{where: {id :CategoryId}}).then((resault)=>{
+            res.status(200).json(resault)
         })
     }catch(error){
         res.status(400).json({error:error.message})

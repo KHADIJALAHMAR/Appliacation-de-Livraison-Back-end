@@ -24,7 +24,6 @@ router.route("/Category")
 .post(AdminController.creatCategory)
 .get(AdminController.getCategory)
 .delete(AdminController.deleteCategory)
-router.route("/Category/:id")
 .put(AdminController.updateCategory)
 
 
