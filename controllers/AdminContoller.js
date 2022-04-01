@@ -1,5 +1,5 @@
 const express = require("express");
-const {User, Category} = require('../models');
+const {Product, Category} = require('../models/index');
 
 
 // ___________________________________________________Crud Category__________________________________________
@@ -58,7 +58,29 @@ const deleteCategory = async (req,res)=>{
 // ___________________________________________________Crud Product ___________________________________________
 
 const createProduct = async(req,res)=>{
-
+    const info ={
+        name:req.body.name,
+        decsription:req.body.decsription,
+        price:req.body.price,
+        // image:req.body.image
+    };
+    console.log(info)
+    const Product=  await Product.create({ 
+        name :info.name,
+        decsription:info.decsription,
+        price:info.price,
+    });
+    try{
+        if(!Product){
+            res.status(404).json({message :' Category Not Create '})
+        }
+        else{
+            res.status(200).json(Product);
+        }
+    }
+    catch(error){
+            res.status(400).json({error :error.message})
+    }
 }
 
 const getProduct = async(req,res)=>{
