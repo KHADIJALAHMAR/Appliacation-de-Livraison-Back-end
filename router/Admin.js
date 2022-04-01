@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const AdminController  =require('../controllers/AdminContoller');
+const {Admin,ProductUpload}  =require('../controllers/index');
 
 
 // ________________________Création Route Admin______________________________________________________________________________
@@ -9,22 +9,21 @@ const AdminController  =require('../controllers/AdminContoller');
 // ------Product------
 
 router.route("/Create")
-.post(AdminController.createProduct)
 
 router.route("/Product")
-.get(AdminController.getProduct)
-.delete(AdminController.deleteProduct)
-router.route("/Product/:id")
-.put(AdminController.updateProduct)
+.get(Admin.getProduct)
+.delete(Admin.deleteProduct)
+.put(Admin.updateProduct)
+.post(ProductUpload.array("Product-image"),Admin.createProduct)
 
 // ------categorie------
 
 router.route("/Category")
 // _____Add Category______
-.post(AdminController.creatCategory)
-.get(AdminController.getCategory)
-.delete(AdminController.deleteCategory)
-.put(AdminController.updateCategory)
+.post(Admin.creatCategory )
+.get(Admin.getCategory)
+.delete(Admin.deleteCategory)
+.put(Admin.updateCategory)
 
 
 

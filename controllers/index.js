@@ -9,10 +9,10 @@ const multer = require('multer');
 function manageStorage(pathName){
     return multer.diskStorage({   
         destination: function(req, file, cb) { 
-           cb(null, pathName );    
+        cb(null, pathName );    
         }, 
         filename: function(req, file, cb) { 
-           cb(null , `image_${Date.now()}.${path.extname(file.originalname).toLowerCase()}`);   
+        cb(null , `image_${Date.now()}.${path.extname(file.originalname).toLowerCase()}`);   
         }
      })
 }
@@ -20,18 +20,18 @@ function manageStorage(pathName){
 // filter function
 const fFilter = (req, file, cb) =>{    
     // Allowed ext
-     const filetypes = /jpeg|jpg|png/;
-  
+    const filetypes = /jpeg|jpg|png/;
+
    // Check ext
     const extname =  filetypes.test(path.extname(file.originalname).toLowerCase());
    // Check mime
-   const mimetype = filetypes.test(file.mimetype);
+const mimetype = filetypes.test(file.mimetype);
 
-   if(mimetype && extname){
-       return cb(null,true);
-   } else {
-       cb('Error: Images Only!');
-   }
+if(mimetype && extname){
+    return cb(null,true);
+} else {
+    cb('Error: Images Only!');
+}
 }
 
 
@@ -41,6 +41,6 @@ const ProductUpload = multer({ fileFilter: fFilter , storage: manageStorage(path
 module.exports ={
     Admin,
     User,
-    ProductUpload
+    ProductUpload,
     
 }

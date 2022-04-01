@@ -58,20 +58,22 @@ const deleteCategory = async (req,res)=>{
 // ___________________________________________________Crud Product ___________________________________________
 
 const createProduct = async(req,res)=>{
-    const info ={
-        name:req.body.name,
+    const images = [];
+    console.log('files',req.files);
+    req.files.map((file, index) => {
+    images.push(file.originalname);
+    });
+
+    const product=  await Product.create({ 
+        name :req.body.name,
         decsription:req.body.decsription,
         price:req.body.price,
-        // image:req.body.image
-    };
-    console.log(info)
-    const Product=  await Product.create({ 
-        name :info.name,
-        decsription:info.decsription,
-        price:info.price,
+        image:images[0],
+        categoryId:req.body.categoryId
     });
+    console.log(product)
     try{
-        if(!Product){
+        if(!product){
             res.status(404).json({message :' Category Not Create '})
         }
         else{
