@@ -43,14 +43,14 @@ const updateCategory =async (req,res)=>{
 }
 const deleteCategory = async (req,res)=>{
     try{
-        const deleteCategory= await Category.deleteOne({where :{id:req.body.id}});
+        const deleteCategory= await Category.destroy({where :{id:req.body.id}});
         if(!deleteCategory){
             res.status(400).json({message :'No Category Found'})
         }else{
             res.status(200).json({message :'Category Has deleted successfully !!'})
         }
     }catch(error){
-        res.json(404).json({error : error.message});
+        res.json(404).json({error:err.message});
     }
 }
 
