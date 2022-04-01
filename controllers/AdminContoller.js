@@ -92,7 +92,16 @@ const updateProduct = async(req,res)=>{
 
 }
 const deleteProduct = async(req,res)=>{
-
+    try{
+        const deleteProduct= await Product.destroy({where :{id:req.body.id}});
+        if(!deleteProduct){
+            res.status(400).json({message :'No Product Found'})
+        }else{
+            res.status(200).json({message :'Product Has deleted successfully !!'})
+        }
+    }catch(error){
+        res.json(404).json({error:err.message});
+    }
 }
 
 module.exports ={
