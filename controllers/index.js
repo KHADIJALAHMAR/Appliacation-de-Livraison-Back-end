@@ -35,4 +35,12 @@ const fFilter = (req, file, cb) =>{
 }
 
 
-const hotelUpload = multer({ fileFilter: fFilter , storage: manageStorage(path.join(path.dirname(__dirname) , 'public' , 'assets' , 'uploads' , 'images' , 'Product_images')) })
+const ProductUpload = multer({ fileFilter: fFilter , storage: manageStorage(path.join(path.dirname(__dirname) , 'public' , 'assets' , 'uploads' , 'images' , 'Product_images')) })
+
+
+module.exports ={
+    Admin,
+    User,
+    ProductUpload
+    
+}
