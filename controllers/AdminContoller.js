@@ -23,8 +23,8 @@ const creatCategory = async (req,res)=>{
 
 const getCategory =async (req,res)=>{
     try{
-        await Category.find().then((resault)=>{
-            res.satus(200).json(resault)
+        await Category.findAll().then((resault)=>{
+            res.json(resault)
         })
     }catch(error){
         res.status(400).json({message :error.message})
