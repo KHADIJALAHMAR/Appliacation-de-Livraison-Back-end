@@ -86,7 +86,13 @@ const createProduct = async(req,res)=>{
 }
 
 const getProduct = async(req,res)=>{
-
+    try{
+        await Product.findAll({include :'category' }).then((resault)=>{
+            res.json(resault)
+        })
+    }catch(error){
+        res.status(400).json({message :error.message})
+    }
 }
 const updateProduct = async(req,res)=>{
 
