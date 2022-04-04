@@ -41,7 +41,7 @@ const get_Commande = async (req, res) => {
 const update_Commande = async (req, res) => {
     let data = req.body;
     let id_commande= req.body.id;
-    
+
     try {
         const command = await Commande.update(
             {
@@ -59,6 +59,20 @@ const update_Commande = async (req, res) => {
         res.status(500).json((error, 'error'));
     }
 }
+const getCommandById = async(req,res)=>{
+    try {
+        const commands = await Commande.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: ['products', 'client', 'delivery']
+        })
+
+        res.status(200).json(commands);
+    } catch (error) {
+        res.status(500).json(error, 'error');
+    }
+}
 
 
 
@@ -67,5 +81,6 @@ module.exports ={
     createCommand,
     get_Commande,
     update_Commande,
+    getCommandById
 
 }
