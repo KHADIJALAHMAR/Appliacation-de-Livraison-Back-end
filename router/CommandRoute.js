@@ -13,9 +13,9 @@ router
     .route('/update')
     .post(CommandeController.update_Commande)
 
-// router
-//     .route('/:id')
-//     .get(CommandeController.get)
+router
+    .route('/:id')
+    .get(CommandeController.getCommandById)
 
 // router
 //     .route('/:id/set/delivery/:userid')
