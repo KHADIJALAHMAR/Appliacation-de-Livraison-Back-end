@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 const CommandeController = require('../controllers/CommandeController');
 
-// router
-//     .route('/')
-//     .get(CommandeController.list)
+router
+    .route('/')
+    .get(CommandeController.get_Commande)
 
 router.route('/create')
     .post(CommandeController.createCommand)

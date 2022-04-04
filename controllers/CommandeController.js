@@ -29,7 +29,7 @@ const createCommand = async (req,res)=>{
     }
 }
 
-const Get_Commande = async (req, res) => {
+const get_Commande = async (req, res) => {
     try {
         const commands = await Commande.findAll({ include: ['products', 'client', 'delivery'] })
 
@@ -41,7 +41,9 @@ const Get_Commande = async (req, res) => {
 
 
 
+
+
 module.exports ={
     createCommand,
-    Get_Commande,
+    get_Commande,
 }
