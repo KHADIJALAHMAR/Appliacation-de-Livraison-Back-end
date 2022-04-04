@@ -8,6 +8,7 @@ const { Commande ,User ,Category ,Product} =require('./models/index');
 // import userRoute
 const authentificationRoute = require('./router/authentificationRoute');
 const AdminRoute =require('./router/Admin');
+const Command_Route =require('./router/CommandRoute')
 
 
 
@@ -19,6 +20,8 @@ app.use(express.json())
 // middleware 
 app.use('/auth', authentificationRoute);
 app.use('/Admin', AdminRoute)
+app.use('/Client',Command_Route)
+
 
 // console
 function ConsolLog(rep, res, next) {

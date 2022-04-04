@@ -1,22 +1,21 @@
 const express = require('express')
 const router = express.Router()
-const {CommandeController} = require('../models/index');
+const CommandeController = require('../controllers/CommandeController');
 
 // router
 //     .route('/')
 //     .get(CommandeController.list)
 
-router
-    .route('/create')
-    .post(CommandeController.create)
+router.route('/create')
+    .post(CommandeController.createCommand)
 
-router
-    .route('/update/:id')
-    .post(CommandeController.update)
+// router
+//     .route('/update/:id')
+//     .post(CommandeController.update)
 
-router
-    .route('/:id')
-    .get(CommandeController.get)
+// router
+//     .route('/:id')
+//     .get(CommandeController.get)
 
 // router
 //     .route('/:id/set/delivery/:userid')
