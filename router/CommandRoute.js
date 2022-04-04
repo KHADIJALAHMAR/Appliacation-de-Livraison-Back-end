@@ -9,9 +9,9 @@ router
 router.route('/create')
     .post(CommandeController.createCommand)
 
-// router
-//     .route('/update/:id')
-//     .post(CommandeController.update)
+router
+    .route('/update')
+    .post(CommandeController.update)
 
 // router
 //     .route('/:id')
