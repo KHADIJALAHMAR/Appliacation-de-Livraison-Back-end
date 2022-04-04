@@ -11,7 +11,7 @@ router.route('/create')
 
 router
     .route('/update')
-    .post(CommandeController.update)
+    .post(CommandeController.update_Commande)
 
 // router
 //     .route('/:id')

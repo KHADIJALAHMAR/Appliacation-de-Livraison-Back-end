@@ -38,7 +38,27 @@ const get_Commande = async (req, res) => {
         res.status(500).json((error, 'error'));
     }
 }
+const update_Commande = async (req, res) => {
+    let data = req.body;
+    let id_commande= req.body.id;
+    
+    try {
+        const command = await Commande.update(
+            {
+                'address': data.address,
+            },
+            {
+                where: {
+                    id: id_commande
+                }
+            }
+        )
 
+        res.status(200).json(command);
+    } catch (error) {
+        res.status(500).json((error, 'error'));
+    }
+}
 
 
 
@@ -46,4 +66,6 @@ const get_Commande = async (req, res) => {
 module.exports ={
     createCommand,
     get_Commande,
+    update_Commande,
+
 }
