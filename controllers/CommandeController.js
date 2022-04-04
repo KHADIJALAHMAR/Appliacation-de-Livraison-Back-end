@@ -11,7 +11,7 @@ const createCommand = async (req,res)=>{
         status :1,
     }
     console.log(data);
-    console.log('req.user.id : ', req.user);
+    console.log('reqUser ', req.user);
     try{
         const commande =await Commande.create({
         address :data.address ,
@@ -29,8 +29,19 @@ const createCommand = async (req,res)=>{
     }
 }
 
+const Get_Commande = async (req, res) => {
+    try {
+        const commands = await Commande.findAll({ include: ['products', 'client', 'delivery'] })
+
+        res.status(200).json(commands)
+    } catch (error) {
+        res.status(500).json((error, 'error'));
+    }
+}
+
 
 
 module.exports ={
-    createCommand
+    createCommand,
+    Get_Commande,
 }
