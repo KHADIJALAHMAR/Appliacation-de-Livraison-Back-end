@@ -1,5 +1,6 @@
 const Admin =require('./AdminContoller');
 const User =require ('./UserController');
+const CommandeController =require('./CommandeController');
 
 // requiring multer
 const path = require('path');
@@ -42,5 +43,6 @@ module.exports ={
     Admin,
     User,
     ProductUpload,
+    CommandeController,
     
 }

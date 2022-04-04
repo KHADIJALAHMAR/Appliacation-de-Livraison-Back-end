@@ -95,7 +95,19 @@ const getProduct = async(req,res)=>{
     }
 }
 const updateProduct = async(req,res)=>{
-
+    const ProductId= req.body.id;
+    console.log(req.body.data, req.params.HotelId);
+  try {
+    Product.update(ProductId, req.body.data, (err, result) => {
+      if (err) {
+        res.status(400).json(err);
+      } else {
+        res.status(200).json(result);
+      }
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 }
 const deleteProduct = async(req,res)=>{
     try{
