@@ -10,12 +10,20 @@ const connexion = require("../config/database");
 
 //  _________________association _______________________
 
-// association commande and commandProduct 
+// association commande and commandProduct Many To many
 
 Product.belongsToMany(Commande, {
     through: CommandProduct,
     as: "commands",
 });;
+
+// association Commande Product 
+
+Commande.belongsToMany(Product, {
+    through: CommandProduct,
+    as: "commands",
+});;
+
 
 // association  User and Commande 
 

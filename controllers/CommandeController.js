@@ -13,7 +13,7 @@ const createCommand = async (req,res)=>{
         // console.log(data);
     }
 
-    console.log('reqUser ', req.tokenData);
+    // console.log('reqUser ', req.tokenData);
     try{
         const commande =await Commande.create({
         address :data.address ,
