@@ -3,15 +3,17 @@ const {Commande} = require('../models/index');
 
 
 const createCommand = async (req,res)=>{
+    // res.json({uudud:req.tokenData })
     let total =0
     const data = {
-        address :req.body.adresse ,
-        clientId :req.user.id,
+        address :req.body.address,
+        clientId :req.tokenData.id,
         total:total,
-        status :1,
+        status:1,
+        // console.log(data);
     }
-    console.log(data);
-    console.log('reqUser ', req.user);
+
+    console.log('reqUser ', req.tokenData);
     try{
         const commande =await Commande.create({
         address :data.address ,

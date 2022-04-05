@@ -1,13 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const CommandeController = require('../controllers/CommandeController');
+const authMiddlwer =require('../middlewares/AuthorizeUser');
 
 router
     .route('/')
     .get(CommandeController.get_Commande)
 
 router.route('/create')
-    .post(CommandeController.createCommand)
+    .post( authMiddlwer.authorizeToken,CommandeController.createCommand)
 
 router
     .route('/update')

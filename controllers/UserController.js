@@ -21,7 +21,7 @@ const handleRegister = async (req,res)=>{
                 email:data.email,
                 password:data.password,
                 gender:data.gender,
-                role:data.role ==="client" ? "livreur" :"client ",
+                role:data.role ==="client" ? "client":"livreur" ,
             })
             res.status(201).json({
                 message: `created User`,
@@ -40,14 +40,14 @@ const handleLogin = async (req,res) => {
             res.status(404).json({message : "email Not Fond"});
         }
         else{
-            await  User.findOne({where :{ password :req.body.password}}).then((resault)=>{
-                if(!resault){
+            await  User.findOne({where :{ email: req.body.email, password :req.body.password}}).then((user)=>{
+                if(!user){
                     res.status(404).json({where :{message : 'Password incorect'}})
                 }else{
-                        const id = user._id;
+                        const id = user.id;
                         const role = user.role;
                         const accessToken = jwt.sign({id,role},process.env.TOKEN_SECRET);
-                        res.json({accessToken});
+                        res.json({accessToken ,user});
                     }
             })
         } 
