@@ -21,7 +21,7 @@ Product.belongsToMany(Commande, {
 
 Commande.belongsToMany(Product, {
     through: CommandProduct,
-    as: "commands",
+    as: "products",
 });;
 
 
@@ -48,7 +48,8 @@ module.exports = {
     Commande,
     User,
     Category,
-    Product
+    Product,
+    CommandProduct
 }
 
 

@@ -20,9 +20,9 @@ module.exports = connexion.define('products',{
         type: Sequelize.STRING,
         allowNull: false,
     },
-    image: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    }
+    // image: {
+    //     type: Sequelize.STRING,
+    //     allowNull: false,
+    // }
 })
 

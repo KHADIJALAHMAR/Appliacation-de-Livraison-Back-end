@@ -1,5 +1,5 @@
 
-const {Commande} = require('../models/index');
+const {Commande ,CommandProduct,} = require('../models/index');
 
 
 const createCommand = async (req,res)=>{
@@ -10,25 +10,33 @@ const createCommand = async (req,res)=>{
         clientId :req.tokenData.id,
         total:total,
         status:1,
-        // console.log(data);
     }
-
+    // console.log(data);
     // console.log('reqUser ', req.tokenData);
-    try{
+
         const commande =await Commande.create({
         address :data.address ,
         clientId :data.clientId,
         total:data.total,
         status :data.status,
         })
-        if(!commande){
-            res.status(404).json({error :err.message})
-        }else{
-            res.status(200).json(commande)
-        }
-    }catch(error){
-        res.status(400).json(error)
-    }
+        
+ const  Data =req.body;
+    Data.products.forEach(async (Command, index) => {
+        let subtotal = Command.price * Command.quantities;
+        console.log('subtotal : ' , subtotal);
+
+        await CommandProduct.create({
+            'commandId': commande.id,
+            'productId': Command.productId,
+            'price': Command.price,
+            'quantities': Command.quantities,
+            'total': subtotal
+        })
+
+        total += subtotal
+    })
+    res.json(commande)
 }
 
 const get_Commande = async (req, res) => {
