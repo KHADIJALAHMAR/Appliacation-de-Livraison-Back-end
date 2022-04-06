@@ -32,6 +32,10 @@ password :{
 role :{
     type :Sequelize.STRING,
 },
+status :{
+    type :Sequelize.INTEGER,
+    defaultValue: null,
+}
 
 // instanceMethods: {
 //     generateHash: function (password) {

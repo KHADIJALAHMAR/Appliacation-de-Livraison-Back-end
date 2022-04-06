@@ -1,5 +1,6 @@
 
-const {Commande ,CommandProduct,} = require('../models/index');
+
+const {Commande ,CommandProduct,User} = require('../models/index');
 
 
 const createCommand = async (req,res)=>{
@@ -9,7 +10,7 @@ const createCommand = async (req,res)=>{
         address :req.body.address,
         clientId :req.tokenData.id,
         total:total,
-        status:1,
+        status:0,
     }
     // console.log(data);
     // console.log('reqUser ', req.tokenData);
@@ -38,6 +39,53 @@ const createCommand = async (req,res)=>{
     })
     res.json(commande)
 }
+
+const UpdateLivreurId = async (req,res)=>{
+    const livreureId = req.params.livreurId;
+        const FindUser = await User.findOne({where: {id:livreureId}})
+
+        // if(FindUser.status === 0){
+        //     const command = await Commande.update({
+
+        //     })
+        //     // where :{livreurId :livreureId}
+        // }
+           
+            
+
+            // await Commande.update(
+            // {
+            //     'livreurId': req.params.id,
+            // },
+            // {
+            //     where: {
+            //         livreurId: req.parms.id,
+            //         livreurId :'Null'
+            //     }
+            // }
+            //   await Commande.update(
+            //     {
+            //         'livreurId': req.params.,
+            //     },
+            //     {
+            //         where: {
+            //             livreurId: id_commande
+            //         }
+            //     }
+            // )
+    
+            // res.status(200).json(command);
+        // ).then((resault)=>{
+        //     res.status(200).json(resault)
+        // })
+
+        // const Conmmandes= await Commande.find({where:{livreurId :"Null" === livreureId}});
+
+
+    
+}
+
+
 
 const get_Commande = async (req, res) => {
     try {
@@ -91,6 +139,7 @@ module.exports ={
     createCommand,
     get_Commande,
     update_Commande,
-    getCommandById
+    getCommandById,
+    UpdateLivreurId
 
 }
