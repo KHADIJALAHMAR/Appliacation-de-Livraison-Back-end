@@ -44,26 +44,6 @@ const createCommand = async (req,res)=>{
     res.json(commande)
 }
 
-// const UpdateLivreurId = async (req,res)=>{
-//     const livreureId = req.params.livreurId;
-//     // const CommandId=req.body.id;
-//         const FindUser = await User.findOne({where: {id:livreureId}})
-//         // res.json(FindUser)
-//         if(FindUser.status === 1){
-//             const command = await Commande.update({
-//                 livreurId :livreureId ,
-//                 where: {
-//                     id:req.params.id,
-//                     livreurId : null
-//                 }
-//             })
-//             // .then()
-//             res.json(command)
-            
-//         }
-    
-//     }
-    
  const UpdateLivreurId = async (req, res) => {
     try {
         const livreureId = req.params.livreurId;
@@ -88,40 +68,7 @@ const createCommand = async (req,res)=>{
         res.status(400).json({error:error.message})
     }
 }
-           
-            
 
-            // await Commande.update(
-            // {
-            //     'livreurId': req.params.id,
-            // },
-            // {
-            //     where: {
-            //         livreurId: req.parms.id,
-            //         livreurId :'Null'
-            //     }
-            // }
-            //   await Commande.update(
-            //     {
-            //         'livreurId': req.params.,
-            //     },
-            //     {
-            //         where: {
-            //             livreurId: id_commande
-            //         }
-            //     }
-            // )
-    
-            // res.status(200).json(command);
-        // ).then((resault)=>{
-        //     res.status(200).json(resault)
-        // })
-
-        // const Conmmandes= await Commande.find({where:{livreurId :"Null" === livreureId}});
-
-
-    
-// }
 
 
 

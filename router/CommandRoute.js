@@ -23,10 +23,6 @@ router
     .get(CommandeController.UpdateLivreurId)
 
 // router
-//     .route('/:id/set/delivery/:userid')
-//     .get(CommandeController.set_delivery)
-
-// router
 //     .route('/status/change/:id/:status')
 //     .get(CommandController.status_change)
 
