@@ -21,7 +21,7 @@ const handleRegister = async (req,res)=>{
                 email:data.email,
                 password:data.password,
                 gender:data.gender,
-                role:data.role ==="client" ? "client":"livreur" ,
+                role:data.role ==="livreur" ? "client":"client" ,
             })
             res.status(201).json({
                 message: `created User`,

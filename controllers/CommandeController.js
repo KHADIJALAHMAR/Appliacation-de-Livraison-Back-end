@@ -29,13 +29,15 @@ const createCommand = async (req,res)=>{
 
         await CommandProduct.create({
             'commandId': commande.id,
-            'productId': Command.productId,
-            'price': Command.price,
-            'quantities': Command.quantities,
+            'productId':Command.productId,
+            'price':Command.price,
+            'quantities':Command.quantities,
             'total': subtotal
         })
 
+
         total += subtotal
+        console.log(Command);
     })
     res.json(commande)
 }

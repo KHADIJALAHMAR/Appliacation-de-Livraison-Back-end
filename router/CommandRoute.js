@@ -18,6 +18,10 @@ router
     .route('/:id')
     .get(CommandeController.getCommandById)
 
+    router
+    .route('/get/:id')
+    .get(CommandeController.UpdateLivreurId)
+
 // router
 //     .route('/:id/set/delivery/:userid')
 //     .get(CommandeController.set_delivery)
