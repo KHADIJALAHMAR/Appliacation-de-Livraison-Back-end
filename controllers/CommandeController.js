@@ -43,13 +43,19 @@ const createCommand = async (req,res)=>{
 const UpdateLivreurId = async (req,res)=>{
     const livreureId = req.params.livreurId;
         const FindUser = await User.findOne({where: {id:livreureId}})
-
-        // if(FindUser.status === 0){
-        //     const command = await Commande.update({
-
-        //     })
-        //     // where :{livreurId :livreureId}
-        // }
+        if(FindUser.status === 0){
+            const command = await Commande.update({
+                livreurId :livreureId ,
+                where: {
+                    id: req.Commnade.id,
+                    livreurId :'Null'
+                }
+            }) 
+            res.json(command)
+            
+        }
+    
+    }
            
             
 
@@ -83,7 +89,7 @@ const UpdateLivreurId = async (req,res)=>{
 
 
     
-}
+// }
 
 
 
