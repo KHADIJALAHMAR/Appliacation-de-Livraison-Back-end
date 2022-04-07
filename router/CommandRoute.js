@@ -19,7 +19,7 @@ router
     .get(CommandeController.getCommandById)
 
     router
-    .route('/get/:id')
+    .route('/get/:id/:livreurId')
     .get(CommandeController.UpdateLivreurId)
 
 // router

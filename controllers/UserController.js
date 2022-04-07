@@ -9,7 +9,7 @@ const handleRegister = async (req,res)=>{
                 email: req.body.email,
                 password: req.body.password,
                 repeated_password: req.body.repeated_password,
-                gender: req.body.gender,
+                status: req.body.status,
                 role: req.body.role,
             }
             if(data.password !==data.repeated_password){
@@ -20,8 +20,8 @@ const handleRegister = async (req,res)=>{
                 username :data.username,
                 email:data.email,
                 password:data.password,
-                gender:data.gender,
-                role:data.role ==="livreur" ? "client":"client" ,
+                status:data.status,
+                role:data.role ==="livreur" ? "livreur":"client" ,
             })
             res.status(201).json({
                 message: `created User`,

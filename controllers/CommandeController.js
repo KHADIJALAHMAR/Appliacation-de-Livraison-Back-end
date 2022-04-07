@@ -12,15 +12,17 @@ const createCommand = async (req,res)=>{
         total:total,
         status:0,
     }
-    // console.log(data);
+
+    console.log(data);
     // console.log('reqUser ', req.tokenData);
 
         const commande =await Commande.create({
-        address :data.address ,
+        address :data.address,
         clientId :data.clientId,
         total:data.total,
         status :data.status,
         })
+
         
  const  Data =req.body;
     Data.products.forEach(async (Command, index) => {
@@ -42,22 +44,50 @@ const createCommand = async (req,res)=>{
     res.json(commande)
 }
 
-const UpdateLivreurId = async (req,res)=>{
-    const livreureId = req.params.livreurId;
-        const FindUser = await User.findOne({where: {id:livreureId}})
-        if(FindUser.status === 0){
-            const command = await Commande.update({
-                livreurId :livreureId ,
-                where: {
-                    id: req.Commnade.id,
-                    livreurId :'Null'
-                }
-            }) 
-            res.json(command)
+// const UpdateLivreurId = async (req,res)=>{
+//     const livreureId = req.params.livreurId;
+//     // const CommandId=req.body.id;
+//         const FindUser = await User.findOne({where: {id:livreureId}})
+//         // res.json(FindUser)
+//         if(FindUser.status === 1){
+//             const command = await Commande.update({
+//                 livreurId :livreureId ,
+//                 where: {
+//                     id:req.params.id,
+//                     livreurId : null
+//                 }
+//             })
+//             // .then()
+//             res.json(command)
             
-        }
+//         }
     
+//     }
+    
+ const UpdateLivreurId = async (req, res) => {
+    try {
+        const livreureId = req.params.livreurId;
+        const FindUser = await User.findOne({where: {id: livreureId}})
+        // res.json(FindUser)
+        if(FindUser.status === 1){
+         
+        const commands = await Commande.update(
+            {
+                'livreurId': req.params.livreurId,
+            },
+            {
+                where: {
+                    id: req.params.id,
+                    livreurId :null
+                }
+            }
+        ) 
+        res.status(200).json(commands);
+        }
+    } catch (error) {
+        res.status(400).json({error:error.message})
     }
+}
            
             
 

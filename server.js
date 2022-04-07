@@ -21,7 +21,7 @@ app.use(express.json())
 app.use('/auth', authentificationRoute);
 app.use('/Admin', AdminRoute)
 app.use('/Client',Command_Route)
-
+app.use('/Livreur',Command_Route)
 
 // console
 function ConsolLog(rep, res, next) {
