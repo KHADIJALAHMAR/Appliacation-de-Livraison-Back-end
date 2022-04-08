@@ -14,6 +14,18 @@ const  authorizeToken = async(req,res,next) =>{
         }
     }
 }
+const authorizeWithRole = (...roles) => {
+
+    return (req, res, next) => {
+            if(!roles.includes(req.tokenData.role.name)) {
+                res.status(401).json({ error: "you are not authorized" });
+            } else {
+                next()
+            }   
+    }
+
+}
 module.exports ={
-    authorizeToken
+    authorizeToken,
+    authorizeWithRole
 };
