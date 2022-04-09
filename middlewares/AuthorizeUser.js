@@ -6,7 +6,7 @@ const  authorizeToken = async(req,res,next) =>{
     }else{
         try{
             const user = await jwt.verify(token , process.env.TOKEN_SECRET )
-            console.log(user);
+            // console.log(user);
             req.tokenData = {id :user.id ,role :user.role};
             next()
         }catch(err){
@@ -14,17 +14,16 @@ const  authorizeToken = async(req,res,next) =>{
         }
     }
 }
-const authorizeWithRole = (...roles) => {
+const authorizeWithRole = (...roles) => { 
+    
+        return (req,res,next) =>{                                                                                                                  
+            // let BaseRole = ['admin', 'delivery', 'client'];
+            if (!roles.includes(req.tokenData.role)) throw res.status(401).json({ error: "you are not authorized" });
 
-    return (req, res, next) => {
-            if(!roles.includes(req.tokenData.role.name)) {
-                res.status(401).json({ error: "you are not authorized" });
-            } else {
-                next()
-            }   
-    }
-
+            next();
+        }
 }
+
 module.exports ={
     authorizeToken,
     authorizeWithRole

@@ -2,13 +2,15 @@ const express = require('express')
 const router = express.Router()
 const CommandeController = require('../controllers/CommandeController');
 const authMiddlwer =require('../middlewares/AuthorizeUser');
+// const authorizeWithRole = require('../middlewares/AuthorizeUser')
+
 
 router
     .route('/')
     .get(CommandeController.get_Commande)
 
 router.route('/create')
-    .post( authMiddlwer.authorizeToken,CommandeController.createCommand)
+    .post(authMiddlwer.authorizeToken,authMiddlwer.authorizeWithRole("livreur"),CommandeController.createCommand)
 
 router
     .route('/update')

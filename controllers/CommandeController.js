@@ -5,7 +5,7 @@ const {Commande ,CommandProduct,User} = require('../models/index');
 // _______________________________________________Crud Cmmande __________________________________________________________________________________________
 const createCommand = async (req,res)=>{
     // res.json({uudud:req.tokenData })
-    let total =0
+    var total =0
     const data = {
         address :req.body.address,
         clientId :req.tokenData.id,
@@ -21,11 +21,12 @@ const createCommand = async (req,res)=>{
         clientId :data.clientId,
         total:data.total,
         status :data.status,
+       
         })
 
  const  Data =req.body;
     Data.products.forEach(async (Command, index) => {
-        let globaltotal = Command.price * Command.quantities;
+        var globaltotal = Command.price * Command.quantities;
         console.log('globaltotal : ' , globaltotal);
 
         await CommandProduct.create({
@@ -36,31 +37,25 @@ const createCommand = async (req,res)=>{
             'total': globaltotal
         })
 
-
+        console.log({ "totalta3 walo":total});
         total += globaltotal
-        console.log(Command);
-    })
-
-    const Update_Total=await Commande.update(
-        {
-            'total': total,
-        },
-        {
-            where: {
-                id: commande.id
+    
+        await Commande.update(
+            {
+                total:total,},
+            {
+            where: { id:commande.id },
             }
-        }
-        )
-        console.log({ "id":commande.id});
-    if(Update_Total){
-        res.status(200).json(Update_Total)
-    }
-    else{
-        res.status(404).json({message:'eroor'})
-    }
+            );
+            console.log( {'total final':total});
+            
+    })
+        res.json(commande)
 
-    res.json(commande)
+
+
 }
+
 
 const get_Commande = async (req, res) => {
     try {
