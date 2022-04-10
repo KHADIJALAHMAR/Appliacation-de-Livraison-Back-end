@@ -25,7 +25,7 @@ router
     .get(CommandeController.UpdateLivreurId)
 
 router
-    .route('status/:id/:status')
+    .route('/status/:id/:status')
     .get(CommandeController.set_status)
 
 module.exports = router;

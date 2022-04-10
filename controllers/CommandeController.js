@@ -12,8 +12,7 @@ const createCommand = async (req,res)=>{
         total:total,
         status:0,
     }
-
-    console.log(data);
+        console.log(data);
     // console.log('reqUser ', req.tokenData);
 
         const commande =await Commande.create({
@@ -21,11 +20,10 @@ const createCommand = async (req,res)=>{
         clientId :data.clientId,
         total:data.total,
         status :data.status,
-       
         })
 
- const  Data =req.body;
-    Data.products.forEach(async (Command, index) => {
+        const  Data =req.body;
+        Data.products.forEach(async (Command, index) => {
         var globaltotal = Command.price * Command.quantities;
         console.log('globaltotal : ' , globaltotal);
 
@@ -50,6 +48,9 @@ const createCommand = async (req,res)=>{
             console.log( {'total final':total});
             
     })
+    // const Create_facteur = async(req,res)=>{
+    //     await Commande 
+    // }
         res.json(commande)
 
 
