@@ -14,7 +14,7 @@ router.route("/Product")
 .get(Admin.getProduct)
 .delete(Admin.deleteProduct)
 .put(Admin.updateProduct)
-.post(ProductUpload.array("Product-image"),Admin.createProduct)
+.post(ProductUpload.single("Product-image"),Admin.createProduct)
 
 // ------categorie------
 
