@@ -1,5 +1,5 @@
 const express = require("express");
-const {Product, Category} = require('../models/index');
+const {Product, Category,User} = require('../models/index');
 
 
 // ___________________________________________________Crud Category__________________________________________
@@ -116,6 +116,27 @@ const deleteProduct = async(req,res)=>{
         res.json(404).json({error:err.message});
     }
 }
+// ____Get Livreur and Update Status ________
+const getLivreurById = async(req,res)=>{
+    const livreurId =req.params.id;
+    try{
+        await User.findOne({where:{id:livreurId}}).then(function(resault){
+            if(resault){
+                User.update(
+                    {status:req.body.status},
+                    {
+                        where:{
+                            id:livreurId
+                        }
+                    }
+                ).then(res.status(200).json({message :"Status updated successfully!"}))
+            }
+        })
+    }
+    catch(error){
+        res.status(400).json({error:err.message})
+    }
+}
 
 module.exports ={
     creatCategory,
@@ -126,7 +147,9 @@ module.exports ={
     createProduct,
     getProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+
+    getLivreurById
 
 }
 

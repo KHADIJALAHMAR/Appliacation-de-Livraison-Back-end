@@ -112,7 +112,7 @@ const set_status = async (req, res) => {
                 { where: { id: req.params.id } }
                 ) 
                 .then(function() {
-                    console.log({ message: "Project updated successfully!" });
+                    console.log({ message: "Status updated successfully!" });
                     if(resault.status ==='finish'){
                 const info={
                 username:resault.client.username,

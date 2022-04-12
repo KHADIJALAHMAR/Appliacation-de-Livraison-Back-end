@@ -16,8 +16,6 @@ router.route("/Product")
 .put(Admin.updateProduct)
 .post(ProductUpload.single("Product-image"),Admin.createProduct)
 
-// ------categorie------
-
 router.route("/Category")
 // _____Add Category______
 .post(Admin.creatCategory )
