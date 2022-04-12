@@ -23,6 +23,11 @@ router.route("/Category")
 .delete(Admin.deleteCategory)
 .put(Admin.updateCategory)
 
+// get Livreur By id 
+router.route("/Livreur/:id")
+.get(Admin.getLivreurById)
+
+
 
 
 module.exports = router ;
