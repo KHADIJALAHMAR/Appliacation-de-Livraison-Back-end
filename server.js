@@ -1,15 +1,15 @@
 const express =require('express');
 const app = express();
-const database = require('./config/database');
-const { CommandeProduct ,User ,Category ,Product} =require('./models/index');
+const database = require('./src/config/database');
+const { CommandeProduct ,User ,Category ,Product} =require('./src/models/index');
 const nodemailer = require('nodemailer');
 
 
 
 // import userRoute
-const authentificationRoute = require('./router/authentificationRoute');
-const AdminRoute =require('./router/Admin');
-const Command_Route =require('./router/CommandRoute')
+const authentificationRoute = require('./src/router/authentificationRoute');
+const AdminRoute =require('./src/router/Admin');
+const Command_Route =require('./src/router/CommandRoute')
 
 
 

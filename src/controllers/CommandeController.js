@@ -5,16 +5,16 @@ const nodemailer = require('nodemailer');
 // _______________________________________________Crud Cmmande __________________________________________________________________________________________
 const createCommand = async (req, res) => {
   // res.json({uudud:req.tokenData })
-  var total = 0;
-  const Data = req.body;
+    var total = 0;
+    const Data = req.body;
   // console.log('reqUser ', req.tokenData);
 
-  const commande = await Commande.create({
+    const commande = await Commande.create({
     address: Data.address,
     clientId: req.tokenData.id,
     total: total,
     status: 0,
-  });
+});
 
   Data.products.forEach(async (Command, index) => {
     var globaltotal = Command.price * Command.quantities;
