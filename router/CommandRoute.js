@@ -10,7 +10,7 @@ router
     .get(CommandeController.get_Commande)
 
 router.route('/create')
-    .post(authMiddlwer.authorizeToken,authMiddlwer.authorizeWithRole("livreur"),CommandeController.createCommand)
+    .post(authMiddlwer.authorizeToken,authMiddlwer.authorizeWithRole("client"),CommandeController.createCommand)
 
 router
     .route('/update')

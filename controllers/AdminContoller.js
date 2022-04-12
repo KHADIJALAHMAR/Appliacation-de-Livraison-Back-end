@@ -84,7 +84,6 @@ const createProduct = async(req,res)=>{
             res.status(400).json({error :error.message})
     }
 }
-
 const getProduct = async(req,res)=>{
     try{
         await Product.findAll({include :'category' }).then((resault)=>{
@@ -96,7 +95,6 @@ const getProduct = async(req,res)=>{
 }
 const updateProduct = async(req,res)=>{
     const ProductId= req.body.id;
-    console.log(req.body.data, req.params.HotelId);
   try {
     Product.update(ProductId, req.body.data, (err, result) => {
       if (err) {

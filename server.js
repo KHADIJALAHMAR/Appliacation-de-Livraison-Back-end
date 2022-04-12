@@ -2,6 +2,7 @@ const express =require('express');
 const app = express();
 const database = require('./config/database');
 const { CommandeProduct ,User ,Category ,Product} =require('./models/index');
+const nodemailer = require('nodemailer');
 
 
 
@@ -38,4 +39,4 @@ database.authenticate()
 
 
 const PORT =4000 || process.env.PORT;
-app.listen(PORT ,()=> console.log(`app running on ${PORT} port`))
+app.listen(PORT ,()=> console.log(`app running on ${PORT} port`));
