@@ -55,7 +55,7 @@ const deleteCategory = async (req,res)=>{
 }
 
 
-// ___________________________________________________Crud Product ___________________________________________
+// ___________________________________________________Crud Product _____________________________________________________
 
 const createProduct = async(req,res)=>{
 
@@ -116,7 +116,7 @@ const deleteProduct = async(req,res)=>{
         res.json(404).json({error:err.message});
     }
 }
-// ____Get Livreur and Update Status ________
+// ________________________________________________Get Livreur and Update Status _______________________________________
 const getLivreurById = async(req,res)=>{
     const livreurId =req.params.id;
     try{
@@ -147,6 +147,8 @@ const findAllLivreur = async(req,res) =>{
         res.status(400).json({message :error.message})
     }
 }
+// _______________________________________________Crud  
+// get All Users 
 const findAllUsers = async(req,res) =>{
     try{
         await User.findAll().then((resault)=>{
@@ -154,6 +156,19 @@ const findAllUsers = async(req,res) =>{
         })
     }catch(error){
         res.status(400).json({message :error.message})
+    }
+}
+// get one User 
+const deleteUser = async(req,res)=>{
+    try{
+        const deleteUser= await User.destroy({where :{id:req.params.id}});
+        if(!deleteUser){
+            res.status(400).json({message :'No User Found'})
+        }else{
+            res.status(200).json({message :'User Has deleted successfully !!'})
+        }
+    }catch(error){
+        res.json(404).json({error:err.message});
     }
 }
 
@@ -172,7 +187,8 @@ module.exports ={
     getLivreurById,
     findAllLivreur,
 
-    findAllUsers
+    findAllUsers,
+    deleteUser
 
 }
 

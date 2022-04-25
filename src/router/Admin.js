@@ -30,7 +30,7 @@ router.route("/Users")
 
 // get One User id 
 router.route("/User/:id")
-.get(Admin.findOne)
+.delete(Admin.deleteUser)
 
 // get Livreurs
 router.route("/Livreurs")
