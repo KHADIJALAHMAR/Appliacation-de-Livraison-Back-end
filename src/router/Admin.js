@@ -28,7 +28,9 @@ router.route("/Category")
 router.route("/Users")
 .get(Admin.findAllUsers)
 
-
+// get One User id 
+router.route("/User/:id")
+.get(Admin.findOne)
 
 // get Livreurs
 router.route("/Livreurs")
