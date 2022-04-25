@@ -157,10 +157,6 @@ const set_status = async (req, res) => {
                 });
             }
         res.status(200).json(resault)
-        // console.log(resault)
-        // console.log(resault.quantities)
-        // console.log(resault.client.quantities)
-        // console.log(resault.)
     })
 };
 

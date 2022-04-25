@@ -137,6 +137,26 @@ const getLivreurById = async(req,res)=>{
         res.status(400).json(error)
     }
 }
+// get All Livreur
+const findAllLivreur = async(req,res) =>{
+    try{
+        await User.findAll({where:{role:'livreur'}}).then((resault)=>{
+            res.json(resault)
+        })
+    }catch(error){
+        res.status(400).json({message :error.message})
+    }
+}
+const findAllUsers = async(req,res) =>{
+    try{
+        await User.findAll().then((resault)=>{
+            res.json(resault)
+        })
+    }catch(error){
+        res.status(400).json({message :error.message})
+    }
+}
+
 
 module.exports ={
     creatCategory,
@@ -149,7 +169,10 @@ module.exports ={
     updateProduct,
     deleteProduct,
 
-    getLivreurById
+    getLivreurById,
+    findAllLivreur,
+
+    findAllUsers
 
 }
 

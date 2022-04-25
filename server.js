@@ -1,5 +1,6 @@
 const express =require('express');
 const app = express();
+const cors =require('cors');
 const database = require('./src/config/database');
 const { CommandeProduct ,User ,Category ,Product} =require('./src/models/index');
 const nodemailer = require('nodemailer');
@@ -16,7 +17,8 @@ const Command_Route =require('./src/router/CommandRoute')
 // database connection
 
 app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 
 // middleware 
 app.use('/auth', authentificationRoute);

@@ -6,9 +6,9 @@ const {Admin,ProductUpload}  =require('../controllers/index');
 // ________________________Création Route Admin______________________________________________________________________________
 
 
+
 // ------Product------
 
-router.route("/Create")
 
 router.route("/Product")
 .get(Admin.getProduct)
@@ -23,9 +23,23 @@ router.route("/Category")
 .delete(Admin.deleteCategory)
 .put(Admin.updateCategory)
 
+//get Users
+
+router.route("/Users")
+.get(Admin.findAllUsers)
+
+
+
+// get Livreurs
+router.route("/Livreurs")
+.get(Admin.findAllLivreur)
+
 // get Livreur By id 
 router.route("/Livreur/:id")
 .get(Admin.getLivreurById)
+
+
+
 
 
 

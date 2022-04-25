@@ -13,8 +13,8 @@ const handleRegister = async (req,res)=>{
                 role: req.body.role,
             }
             if(data.password !==data.repeated_password){
-                // console.log('passwords are not Identical')
-                res.status(404).json({message : "passwords are not Identical"})
+                
+                console.log({message : "passwords are not Identical"})
             }
                 await User.create({
                 username :data.username,
@@ -60,6 +60,6 @@ const handleLogin = async (req,res) => {
 
 module.exports ={
     handleRegister,
-    handleLogin
+    handleLogin,
 
 }
