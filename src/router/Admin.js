@@ -7,8 +7,8 @@ const {Admin,ProductUpload}  =require('../controllers/index');
 
 
 
-// ------Product------
 
+// ------Product------
 
 router.route("/Product")
 .get(Admin.getProduct)
@@ -36,8 +36,8 @@ router.route("/User/:id")
 router.route("/Livreurs")
 .get(Admin.findAllLivreur)
 
-// get Livreur By id 
-router.route("/Livreur/:id")
+// get Livreur By id  <Change status >
+router.route("/Livreur/:id/:status")
 .get(Admin.getLivreurById)
 
 

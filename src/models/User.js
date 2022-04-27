@@ -33,7 +33,7 @@ role :{
     type :Sequelize.STRING,
 },
 status :{
-    type :Sequelize.INTEGER,
+    type :Sequelize.STRING,
     defaultValue: null,
 }
 

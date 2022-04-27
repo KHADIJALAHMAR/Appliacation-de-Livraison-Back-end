@@ -123,7 +123,7 @@ const getLivreurById = async(req,res)=>{
         await User.findOne({where:{id:livreurId}}).then(function(resault){
             if(resault){
                 User.update(
-                    {status:req.body.status},
+                    {status:req.params.status},
                     {
                         where:{
                             id:livreurId
@@ -147,6 +147,7 @@ const findAllLivreur = async(req,res) =>{
         res.status(400).json({message :error.message})
     }
 }
+
 // _______________________________________________Crud  
 // get All Users 
 const findAllUsers = async(req,res) =>{
