@@ -1,4 +1,5 @@
 const express = require("express");
+const res = require("express/lib/response");
 const {Product, Category,User} = require('../models/index');
 
 
@@ -31,9 +32,8 @@ const getCategory =async (req,res)=>{
     }
 }
 const updateCategory =async (req,res)=>{
-    const CategoryId= req.body.id;
     try{
-        await Category.update({name:req.body.name},{where: {id :CategoryId}}).then((resault)=>{
+        await Category.update({name:req.body.name},{where: {id :req.params.id}}).then((resault)=>{
             res.status(200).json(resault)
         })
     }catch(error){
@@ -43,7 +43,7 @@ const updateCategory =async (req,res)=>{
 }
 const deleteCategory = async (req,res)=>{
     try{
-        const deleteCategory= await Category.destroy({where :{id:req.body.id}});
+        const deleteCategory= await Category.destroy({where :{id:req.params.id}});
         if(!deleteCategory){
             res.status(400).json({message :'No Category Found'})
         }else{
@@ -51,6 +51,17 @@ const deleteCategory = async (req,res)=>{
         }
     }catch(error){
         res.json(404).json({error:err.message});
+    }
+}
+const getCategoryById = async(req,res) =>{
+    try{
+    await Category.findOne({where :{id:req.params.id}}).then( (resault)=>{
+            res.status(200).json(resault)
+        })
+        
+    }
+    catch(error){
+        res.status(400).json({message :error.message})
     }
 }
 
@@ -118,6 +129,7 @@ const deleteProduct = async(req,res)=>{
 }
 // ________________________________________________Get Livreur and Update Status _______________________________________
 const getLivreurById = async(req,res)=>{
+    console.log(req.params.id);
     const livreurId =req.params.id;
     try{
         await User.findOne({where:{id:livreurId}}).then(function(resault){
@@ -179,6 +191,7 @@ module.exports ={
     getCategory,
     updateCategory,
     deleteCategory,
+    getCategoryById,
 
     createProduct,
     getProduct,

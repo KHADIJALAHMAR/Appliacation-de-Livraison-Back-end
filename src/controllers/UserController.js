@@ -16,7 +16,7 @@ const handleRegister = async (req,res)=>{
                 
                 console.log({message : "passwords are not Identical"})
             }
-            console.log('==', data.role ==="livreur" ? 'pending' : null)
+            // console.log('==', data.role ==="livreur" ? 'pending' : null)
                 const user = await User.create({
                 username :data.username,
                 email:data.email,

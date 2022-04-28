@@ -20,9 +20,11 @@ router.route("/Category")
 // _____Add Category______
 .post(Admin.creatCategory )
 .get(Admin.getCategory)
-.delete(Admin.deleteCategory)
-.put(Admin.updateCategory)
 
+router.route("/Category/:id")
+.put(Admin.updateCategory)
+.delete(Admin.deleteCategory)
+.get(Admin.getCategoryById)
 //get Users
 
 router.route("/Users")

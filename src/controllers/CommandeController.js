@@ -84,8 +84,7 @@ const UpdateLivreurId = async (req, res) => {
   try {
     const livreureId = req.params.livreurId;
     const FindUser = await User.findOne({ where: { id: livreureId } });
-    // res.json(FindUser)
-    if (FindUser.status === 1) {
+    if (FindUser.status === 'accepted') {
       const commands = await Commande.update(
         {
           livreurId: req.params.livreurId,
